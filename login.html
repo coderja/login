@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form>
+    <input id="un" name="uname" type="text"/><br/>
+    <input id="up" name="upwd" type="password"/><br/>
+    <input id="loginBtn" value="登陆" type="button"/>
+</form>
+<script src="../js/ajax.js"></script>
+<script>
+    loginBtn.onclick=function(){
+        let uname = un.value;
+        let upwd = up.value;
+          ajax({
+              type:"post",
+              url:'login.php',
+              data:'uname='+uname+"&upwd="+upwd,
+              dataType:'json'
+          }).then(function(data){
+              if(data.code=='1')
+              location.href='index.html'
+              console.log(data)
+          })
+    }
+</script>
+</body>
+</html>
